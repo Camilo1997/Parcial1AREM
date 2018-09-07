@@ -20,8 +20,7 @@ public class App {
     public static void main(String[] args) {
         port(getPort());
         codeGenerator = new codeWebGenerator();
-        get("/", (req, res) -> codeGenerator.getAllCode(req, res));
-        get("/results", (req, res) -> codeGenerator.codeJsonGenerator());
+        get("/results", (req, res) -> codeGenerator.codeJsonGenerator(req, res));
 
     }
 

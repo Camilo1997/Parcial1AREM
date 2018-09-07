@@ -30,31 +30,15 @@ public class codeWebGenerator {
     private JsonCode codeJson;
 
     public codeWebGenerator() {
-        inHtml = "<HTML>";
-        finHtml = "</HTML>";
-        inBody = "<BODY>";
-        finBody = "</BODY>";
-        inForm = "<form action='results'>";
-        finForm = "</form>";
-        nameInput = "<p>Inserte numeros, deben ir separados por espacios, los decimales "
-                + "deben ir con punto (.) no con coma (,) al final de los numeros debe ir un espacio"
-                + "para que puedan ser calculados todos</p>";
-        input = "<input type='text' name='numbers'>";
-        resultButton = "<input type='submit' value='Calcular'>";
-        allCode = inHtml + inBody + inForm + nameInput + input + resultButton + finForm + finBody + finHtml;
     }
 
-    public String codeJsonGenerator() throws FileNotFoundException, UnsupportedEncodingException {
+    public String codeJsonGenerator(Request req, Response res) throws FileNotFoundException, UnsupportedEncodingException {
+        this.req = req;
+        this.res = res;
         getResults();
         textToAFile();
         codeJson = new JsonCode();
-        return inHtml + inBody + "<p>" + codeJson.getCodeJson() + "</p>" + finBody + finHtml;
-    }
-
-    public String getAllCode(Request req, Response res) {
-        this.req = req;
-        this.res = res;
-        return allCode;
+        return codeJson.getCodeJson();
     }
 
     public void getResults() {
