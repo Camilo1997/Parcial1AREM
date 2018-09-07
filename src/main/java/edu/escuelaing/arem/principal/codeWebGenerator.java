@@ -48,7 +48,7 @@ public class codeWebGenerator {
         getResults();
         textToAFile();
         codeJson = new JsonCode();
-        return inHtml + inBody + codeJson.getCodeJson() + finBody + finHtml;
+        return inHtml + inBody + "<p>" + codeJson.getCodeJson() + "</p>" + finBody + finHtml;
     }
 
     public String getAllCode(Request req, Response res) {
